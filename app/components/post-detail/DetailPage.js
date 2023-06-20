@@ -1,12 +1,17 @@
+"use client";
 import Image from "next/image";
 import classes from "./DetailsPage.module.css";
+import { useSelector } from "react-redux";
 
 const DetailPage = ({ posts }) => {
+	const comment = useSelector((state) => state.posts.comments);
 	const newDate = new Date(posts.date).toLocaleDateString("en-US", {
 		day: "numeric",
 		month: "short",
 		year: "numeric",
 	});
+	const count = comment.length > 0 ? "Comments" : "Comment";
+
 	return (
 		<div className={`${classes.detail} container mt-20 mb-10`}>
 			<div className="text-center mb-3">
@@ -19,7 +24,7 @@ const DetailPage = ({ posts }) => {
 					/>
 				</div>
 				<time>
-					{newDate} - {`6 Comments`}
+					{newDate} - {`${comment.length} ${count}`}
 				</time>
 			</div>
 			<hr />

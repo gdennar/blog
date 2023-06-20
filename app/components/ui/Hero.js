@@ -50,11 +50,11 @@ const Hero = ({ data }) => {
 									<p className={`${classes.heroBlog} font-light leading-7`}>
 										{description.substring(0, 100).concat("...")}
 									</p>
-									<div>
+									{/* <div>
 										<Link href={`/posts/${slug}`} className={classes.heroLink}>
 											Read More
 										</Link>
-									</div>
+									</div> */}
 								</div>
 							);
 						})}

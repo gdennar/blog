@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { postAction } from "@/app/store/postSlice";
 
-const Comments = async (props) => {
+const Comments = (props) => {
 	const { slug } = props;
 	const dispatch = useDispatch();
 
@@ -33,6 +33,7 @@ const Comments = async (props) => {
 
 	const showCommentHandler = (event) => {
 		event.preventDefault();
+		console.log("button clicked");
 		setShowComments(!showComments);
 	};
 
@@ -49,6 +50,7 @@ const Comments = async (props) => {
 		<section className={`container ${classes.comments}`}>
 			{!showComments ? (
 				<Button
+					type="button"
 					onClick={showCommentHandler}
 					variant="outlined"
 					className={classes.btn}
@@ -61,7 +63,9 @@ const Comments = async (props) => {
 			{showComments ? <CommentList slug={slug} /> : ""}
 			{showComments && !showForm ? (
 				<div className="flex justify-end">
-					<Button onClick={showFormHandler}>Add Comment</Button>
+					<Button onClick={showFormHandler} type="button">
+						Add Comment
+					</Button>
 				</div>
 			) : (
 				""

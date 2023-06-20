@@ -21,9 +21,7 @@ const Post = ({ _id, title, description, slug, imageUrl, date }) => {
 						</div>
 						<div className={classes.postDetails}>
 							<h3>{title}</h3>
-							<time>
-								{newDate} - {`6 Comments`}
-							</time>
+							<time>{newDate}</time>
 							<p className="pt-3 ">
 								{description.substring(0, 200).concat("...")}
 							</p>

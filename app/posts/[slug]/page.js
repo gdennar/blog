@@ -17,8 +17,9 @@ async function PostDetail({ params: { slug } }) {
 			<Suspense fallback={<div>Loading post...</div>}>
 				<DetailPage posts={posts} />
 			</Suspense>
-
-			<Comments className="mb-10" slug={slug} />
+			<Suspense fallback={<div>Loading post...</div>}>
+				<Comments className="mb-10" slug={slug} />
+			</Suspense>
 		</section>
 	);
 }
