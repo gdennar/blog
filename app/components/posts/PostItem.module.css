@@ -1,0 +1,21 @@
+.postTitle {
+	color: var(--background-start);
+	font-size: 2rem;
+	font-weight: 530;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	padding: 10px 0;
+}
+
+.btnLong {
+	color: var(--background-start);
+	background-color: var(--primary-color);
+	padding: 5px 0;
+	font-size: 1.2rem;
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+	border: 1px solid var(--background-start);
+}
+
+.btnLong:hover {
+	background-color: var(--background-start);
+	color: var(--primary-color);
+}

@@ -1,0 +1,49 @@
+.post {
+	width: 100%;
+	min-height: 550px;
+}
+
+.post:hover {
+	transform: scale(1.05);
+	box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.postImage img {
+	margin-left: auto;
+	margin-right: auto;
+	height: 450px;
+}
+
+.postDetails h3 {
+	font-size: 1.5rem;
+	padding-top: 15px;
+}
+
+.postDetails time {
+	font-size: 0.9rem;
+	word-spacing: 5px;
+	color: var(--background-end);
+}
+
+.postDetails > * {
+	padding-bottom: 20px;
+}
+
+.btnShort {
+	border: 2px solid var(--background-start);
+	padding: 10px;
+	border-radius: 2px;
+}
+
+.btnShort:hover {
+	background-color: var(--background-start);
+	color: var(--primary-color);
+}
+
+@media screen and (max-width: 952px) {
+	.postImage img {
+		margin-left: auto;
+		margin-right: auto;
+		min-height: 450px;
+	}
+}

@@ -1,0 +1,13 @@
+.header {
+	padding-top: 30px;
+	font-size: 3rem;
+	color: var(--primary-color);
+	background-color: var(--background-start);
+	height: 224px;
+	border: 1px solid var(--background-start);
+}
+
+.header small {
+	font-size: 1.3rem;
+	color: var(--background-end);
+}

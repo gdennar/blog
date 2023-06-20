@@ -1,0 +1,15 @@
+.footerNav {
+	height: 40px;
+	color: #fff;
+	padding-left: 20px;
+	padding-right: 50px;
+	background-color: var(--background-start);
+	margin: auto 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}

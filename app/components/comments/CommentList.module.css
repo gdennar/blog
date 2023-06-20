@@ -1,0 +1,23 @@
+.listInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.listInfo .info {
+	display: inline-grid;
+	color: #735f32;
+	padding: 10px;
+}
+
+.line {
+	border: 1px solid #73603279;
+}
+
+.title {
+	text-align: center;
+	font-size: 1.7rem;
+	background-color: #735f32;
+	font-style: italic;
+	color: #fff;
+}

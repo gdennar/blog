@@ -1,0 +1,16 @@
+.comments {
+	margin-bottom: 7rem;
+}
+
+.comments .btn {
+	width: 100%;
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: var(--background-start);
+	border-color: var(--background-start);
+}
+
+.comments .btn:hover {
+	background-color: #100f0f;
+	color: #fff;
+}

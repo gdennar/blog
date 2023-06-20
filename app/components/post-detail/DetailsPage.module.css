@@ -1,0 +1,29 @@
+.postImage {
+	background-color: var(--background-end);
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url("../../../public/images/site/slug-image.jpg");
+	/* background-repeat: no-repeat; */
+	background-size: cover;
+	/* background-position: center; */
+	animation: slidein 200s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+.postImage img {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@keyframes slidein {
+	from {
+		background-position: top;
+		background-size: 3000px;
+	}
+	to {
+		background-position: -100px 0px;
+		background-size: 2750px;
+	}
+}
