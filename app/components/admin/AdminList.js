@@ -6,11 +6,11 @@ import { postAction } from "@/app/store/postSlice";
 import { useFetchCollection } from "../../lib/api-utils";
 import Link from "next/link";
 import { Alert } from "@material-tailwind/react";
-import Loading from "@/app/loading";
 
 const AdminList = () => {
 	const [message, setMessage] = useState("");
 	const { data, isLoading } = useFetchCollection();
+
 	const posts = useSelector((state) => state.posts.posts);
 	const dispatch = useDispatch();
 
@@ -65,13 +65,13 @@ const AdminList = () => {
 				</thead>
 				<tbody className="table-row-group">
 					{isLoading ? (
-						<p className="text-center text-xl">Loading...</p>
+						<tr>
+							<td className="text-center table-row p-10">
+								<p className="text-xl">Loading...</p>
+							</td>
+						</tr>
 					) : (
-						<PostItem
-							posts={posts}
-							onDelete={handleDelete}
-							loading={isLoading}
-						/>
+						<PostItem posts={posts} onDelete={handleDelete} />
 					)}
 				</tbody>
 			</table>

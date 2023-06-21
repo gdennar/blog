@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import classes from "./Post.module.css";
 
-const Post = ({ _id, title, description, slug, imageUrl, date }) => {
+const Post = ({ title, description, slug, imageUrl, date }) => {
 	const linkPath = `/posts/${slug}`;
 
 	const newDate = new Date(date).toLocaleDateString("en-US", {

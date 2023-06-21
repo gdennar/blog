@@ -9,11 +9,30 @@ export async function getData() {
 	return data;
 }
 
-// export async function getComments(slug) {
-// 	const response = await fetch(
-// 		`http://localhost:3000/api/comments/?slug=${slug}`
-// 	);
-// 	const result = await response.json();
-// 	const data = result.comments;
-// 	return data;
-// }
+export const editPost = async (e) => {
+	e.preventDefault();
+	let updatedPost = {
+		title: formData.title,
+		description: formData.description,
+		imageUrl: formData.imageUrl,
+		slug: formData.slug,
+		date: formData.date,
+		author: formData.author,
+		isFeatured: formData.isFeatured,
+		isStarred: formData.isStarred,
+	};
+	const response = await fetch(`/api/admin?slug=${params}`, {
+		method: "PUT",
+		body: JSON.stringify(updatedPost),
+		headers: {
+			"Content-Type": "application/json",
+		},
+	});
+	if (response.ok) {
+		console.log("Form submitted");
+		setFormData(initialState);
+		router.push("/admin/posts");
+	} else {
+		console.log("Error submitting");
+	}
+};

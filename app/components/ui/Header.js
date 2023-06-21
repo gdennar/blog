@@ -8,13 +8,14 @@ const Header = () => {
 	const router = useRouter();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+	const ans = process.env.ADMIN_KEY;
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
 
 	const accessAdmin = () => {
 		const passcode = prompt("Are you an admin:");
-		if (passcode === "Denny") {
+		if (passcode === ans) {
 			router.push("/admin/posts");
 		} else {
 			alert("Access Denied");

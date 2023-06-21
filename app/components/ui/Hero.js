@@ -3,12 +3,9 @@ import Image from "next/image";
 import profileImg from "../../../public/images/site/goldenImg.png";
 import avatarImg from "../../../public/images/site/profile-pic.png";
 import classes from "./Hero.module.css";
-import Link from "next/link";
 
 const Hero = ({ data }) => {
 	const isStarred = data.filter((post) => post.isStarred === true);
-
-	console.log(isStarred);
 
 	return (
 		<section className={`w-screen ${classes.hero}`}>

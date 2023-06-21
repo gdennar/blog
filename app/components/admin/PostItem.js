@@ -1,7 +1,9 @@
+import { useEditPost } from "@/app/lib/api-utils";
 import { useRouter } from "next/navigation";
 
 const PostItem = (props) => {
-	const { posts, onDelete, loading } = props;
+	const { posts, onDelete } = props;
+	const { loading } = useEditPost();
 	const router = useRouter();
 
 	const handleEdit = (slug) => {
@@ -24,7 +26,7 @@ const PostItem = (props) => {
 								className="bg-edit text-white p-2 rounded-md "
 								onClick={() => handleEdit(post.slug)}
 							>
-								{loading ? "Opening..." : "Edit"}
+								{loading ? "Loading..." : "Edit"}
 							</button>
 						</td>
 						<td className="border px-8 py-4">

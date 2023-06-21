@@ -4,7 +4,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
-import { Checkbox } from "@material-tailwind/react";
+import { Alert, Checkbox } from "@material-tailwind/react";
+import { useEditPost, useAddPost } from "@/app/lib/api-utils";
 
 const initialState = {
 	title: "",
@@ -18,7 +19,10 @@ const initialState = {
 };
 
 const AdminForm = () => {
-	const [isLoading, setIsLoading] = useState(false);
+	const { isLoading, addPost } = useAddPost();
+	const [message, setMessage] = useState("");
+	const { loading, editPost } = useEditPost();
+
 	const searchParams = useSearchParams();
 	const params = searchParams.get("slug");
 
@@ -46,51 +50,24 @@ const AdminForm = () => {
 		setFormData({ ...formData, [name]: newValue });
 	};
 
-	const addPost = async (e) => {
+	const handleAddPost = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
-		const response = await fetch("/api/admin", {
-			method: "POST",
-			body: JSON.stringify(formData),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		if (response.ok) {
-			router.push("/admin/posts");
-			setIsLoading(false);
+		try {
+			await addPost(formData, router);
 			setFormData(initialState);
-		} else {
-			setIsLoading(false);
-			setFormData(initialState);
+		} catch (error) {
+			setMessage(error.message);
 		}
 	};
 
-	const editPost = async (e) => {
+	const handleEditPost = async (e) => {
 		e.preventDefault();
-		let updatedPost = {
-			title: formData.title,
-			description: formData.description,
-			imageUrl: formData.imageUrl,
-			slug: formData.slug,
-			date: formData.date,
-			author: formData.author,
-			isFeatured: formData.isFeatured,
-			isStarred: formData.isStarred,
-		};
-		const response = await fetch(`/api/admin?slug=${params}`, {
-			method: "PUT",
-			body: JSON.stringify(updatedPost),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		if (response.ok) {
-			console.log("Form submitted");
+
+		try {
+			await editPost(formData, params, router);
 			setFormData(initialState);
-			router.push("/admin/posts");
-		} else {
-			console.log("Error submitting");
+		} catch (error) {
+			setMessage(error);
 		}
 	};
 
@@ -102,10 +79,16 @@ const AdminForm = () => {
 					View All Posts
 				</Link>
 			</div>
-
+			{message ? (
+				<Alert color="red" variant="gradient">
+					{message}
+				</Alert>
+			) : (
+				""
+			)}
 			<form
 				className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-				onSubmit={detectForm(addPost, editPost)}
+				onSubmit={detectForm(handleAddPost, handleEditPost)}
 			>
 				<div className="mb-4">
 					<input
@@ -218,9 +201,9 @@ const AdminForm = () => {
 						<button
 							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 							type="submit"
-							disabled={isLoading}
+							disabled={loading}
 						>
-							{isLoading ? "Updating..." : "Update"}
+							{loading ? "Updating..." : "Update"}
 						</button>
 					)}
 				</div>
