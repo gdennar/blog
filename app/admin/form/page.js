@@ -1,9 +1,12 @@
+import { Suspense } from "react";
 import AdminForm from "../../components/admin/AdminForm";
 
 const Adminpage = () => {
 	return (
 		<div>
-			<AdminForm />
+			<Suspense fallback="Loading...">
+				<AdminForm />
+			</Suspense>
 		</div>
 	);
 };

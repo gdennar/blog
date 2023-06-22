@@ -7,7 +7,7 @@ export const useFetchCollection = () => {
 
 	const getData = async () => {
 		setisLoading(true);
-		const response = await fetch("http://localhost:3000/api/admin");
+		const response = await fetch("http://127.0.0.1:3000/api/admin");
 		const data = await response.json();
 		setData(data.message);
 		setisLoading(false);
@@ -26,7 +26,7 @@ export const useAddPost = () => {
 	const addPost = async (formData, router) => {
 		try {
 			setIsLoading(true);
-			const response = await fetch("/api/admin", {
+			const response = await fetch("http://127.0.0.1:3000/api/admin", {
 				method: "POST",
 				body: JSON.stringify(formData),
 				headers: {
@@ -67,13 +67,16 @@ export const useEditPost = () => {
 				isStarred: formData.isStarred,
 			};
 
-			const response = await fetch(`/api/admin?slug=${params}`, {
-				method: "PUT",
-				body: JSON.stringify(updatedPost),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
+			const response = await fetch(
+				`http://127.0.0.1:3000/api/admin?slug=${params}`,
+				{
+					method: "PUT",
+					body: JSON.stringify(updatedPost),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			);
 
 			if (response.ok) {
 				console.log("Form submitted");

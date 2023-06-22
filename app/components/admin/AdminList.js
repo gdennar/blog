@@ -24,9 +24,12 @@ const AdminList = () => {
 
 	const handleDelete = async (slug) => {
 		try {
-			const response = await fetch(`/api/admin/?slug=${slug}`, {
-				method: "DELETE",
-			});
+			const response = await fetch(
+				`http://127.0.0.1:3000/api/admin/?slug=${slug}`,
+				{
+					method: "DELETE",
+				}
+			);
 
 			if (response.ok) {
 				setMessage("Post Deleted");
@@ -65,7 +68,7 @@ const AdminList = () => {
 				</thead>
 				<tbody className="table-row-group">
 					{isLoading ? (
-						<tr>
+						<tr key="loader">
 							<td className="text-center table-row p-10">
 								<p className="text-xl">Loading...</p>
 							</td>

@@ -9,7 +9,7 @@ const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const ans = process.env.NEXT_PUBLIC_ADMIN_KEY;
-	console.log(ans);
+
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};

@@ -17,7 +17,7 @@ const Comments = (props) => {
 	useEffect(() => {
 		const getData = async () => {
 			const response = await fetch(
-				`http://localhost:3000/api/comments/?slug=${slug}`
+				`http://127.0.0.1:3000/api/comments/?slug=${slug}`
 			);
 			const result = await response.json();
 			const comments = result.comments;
@@ -33,7 +33,6 @@ const Comments = (props) => {
 
 	const showCommentHandler = (event) => {
 		event.preventDefault();
-		console.log("button clicked");
 		setShowComments(!showComments);
 	};
 
