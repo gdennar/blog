@@ -11,7 +11,7 @@ const FeaturedPosts = ({ data }) => {
 			>
 				<li className="shadow-md">Featured Posts</li>
 				{featuredPosts.map((post) => (
-					<li key={post.id} className={`${classes.featuredPost} shadow-lg`}>
+					<li key={post._id} className={`${classes.featuredPost} shadow-lg`}>
 						<Link href={`/posts/${post.slug}`}>
 							<div className={classes.postImage}>
 								<Image

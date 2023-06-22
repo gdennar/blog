@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const url = process.env.MONGO_URL_KEY;
+const url = process.env.mongodb_url;
 
 export const connectDatabase = async () => {
 	let client;

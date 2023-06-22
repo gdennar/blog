@@ -8,7 +8,7 @@ const Header = () => {
 	const router = useRouter();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-	const ans = process.env.NEXT_PUBLIC_ADMIN_KEY;
+	const ans = process.env.admin_key;
 
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
