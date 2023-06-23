@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const CommentList = ({ slug }) => {
 	const filteredComment = useSelector((state) => state.posts.comments);
+	
 
 	return (
 		<>

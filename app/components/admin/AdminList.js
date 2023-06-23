@@ -10,6 +10,7 @@ import { Alert } from "@material-tailwind/react";
 const AdminList = () => {
 	const [message, setMessage] = useState("");
 	const { data, isLoading } = useFetchCollection();
+	const url = process.env.api_url;
 
 	const posts = useSelector((state) => state.posts.posts);
 	const dispatch = useDispatch();
@@ -24,12 +25,9 @@ const AdminList = () => {
 
 	const handleDelete = async (slug) => {
 		try {
-			const response = await fetch(
-				`http://127.0.0.1:3000/api/admin/?slug=${slug}`,
-				{
-					method: "DELETE",
-				}
-			);
+			const response = await fetch(`${url}/api/admin/?slug=${slug}`, {
+				method: "DELETE",
+			});
 
 			if (response.ok) {
 				setMessage("Post Deleted");

@@ -13,6 +13,7 @@ const CommentForm = ({ postComment, slug }) => {
 	const [message, setMessage] = useState("");
 	const [timeStamp, setTimestamp] = useState(currentTimestamp);
 	const dispatch = useDispatch();
+	const url = process.env.api_url;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -25,7 +26,7 @@ const CommentForm = ({ postComment, slug }) => {
 		};
 
 		try {
-			const response = await fetch(`http://127.0.0.1:3000/api/comments`, {
+			const response = await fetch(`${url}/api/comments`, {
 				method: "POST",
 				body: JSON.stringify(comments),
 				headers: {

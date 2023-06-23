@@ -10,15 +10,14 @@ import { postAction } from "@/app/store/postSlice";
 const Comments = (props) => {
 	const { slug } = props;
 	const dispatch = useDispatch();
+	const url = process.env.api_url;
 
 	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 
 	useEffect(() => {
 		const getData = async () => {
-			const response = await fetch(
-				`http://127.0.0.1:3000/api/comments/?slug=${slug}`
-			);
+			const response = await fetch(`${url}/api/comments/?slug=${slug}`);
 			const result = await response.json();
 			const comments = result.comments;
 

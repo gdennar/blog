@@ -1,5 +1,7 @@
 export async function getData() {
-	const response = await fetch("http://127.0.0.1:3000/api/admin", {
+	const url = process.env.api_url;
+
+	const response = await fetch(`${url}/api/admin`, {
 		next: {
 			revalidate: 120,
 		},
