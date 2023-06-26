@@ -7,6 +7,16 @@ import {
 
 import { NextResponse } from "next/server";
 
+export const corsHeaders = {
+	"Access-Control-Allow-Origin": "*",
+	"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+	"Access-Control-Allow-Headers": "Content-Type, Authorization",
+};
+
+export async function OPTIONS(request) {
+	return NextResponse.json({}, { headers: corsHeaders });
+}
+
 export async function GET(request) {
 	const { searchParams } = new URL(request.url);
 	const slug = searchParams.get("slug");
@@ -21,7 +31,10 @@ export async function GET(request) {
 		}
 		const filteredComment = result.filter((comment) => comment.slug === slug);
 
-		return NextResponse.json({ comments: filteredComment });
+		return NextResponse.json(
+			{ comments: filteredComment },
+			{ headers: corsHeaders }
+		);
 	} catch (error) {
 		return NextResponse.json({ message: "Error getting posts", status: 500 });
 	} finally {
@@ -48,7 +61,10 @@ export async function POST(request) {
 		result = await insertDocument(client, "posts", "comments", newComment);
 		newComment._id = result.insertedId;
 
-		return NextResponse.json({ comments: newComment, status: 201 });
+		return NextResponse.json(
+			{ comments: newComment, status: 201 },
+			{ headers: corsHeaders }
+		);
 	} catch (error) {
 		return NextResponse.json({ message: error.message, status: 500 });
 	} finally {
