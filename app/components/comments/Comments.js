@@ -11,6 +11,7 @@ const Comments = (props) => {
 	const { slug } = props;
 	const dispatch = useDispatch();
 	const url = process.env.api_url;
+	console.log(url);
 
 	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
@@ -28,7 +29,7 @@ const Comments = (props) => {
 			);
 		};
 		getData();
-	}, [dispatch, slug]);
+	}, [dispatch, slug, url]);
 
 	const showCommentHandler = (event) => {
 		event.preventDefault();
