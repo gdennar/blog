@@ -1,4 +1,6 @@
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
+// const dns = require("dns");
+// dns.setDefaultResultOrder("ipv4first");
+// const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
 /** @type {import('next').NextConfig} */
 

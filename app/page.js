@@ -3,6 +3,8 @@ import Hero from "./components/ui/Hero";
 import PostItem from "./components/posts/PostItem";
 import { getData } from "./lib/fetch";
 
+//export const dynamic = "force-dynamic";
+
 async function Home() {
 	const posts = await getData();
 

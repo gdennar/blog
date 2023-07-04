@@ -18,7 +18,7 @@ const Comments = (props) => {
 	useEffect(() => {
 		let subscribed = true;
 		const getData = async () => {
-			const response = await fetch(`${url}/api/comments/?slug=${slug}`);
+			const response = await fetch(`/api/comments/?slug=${slug}`);
 			const result = await response.json();
 			const comments = result.comments;
 			if (subscribed) {

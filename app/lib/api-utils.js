@@ -9,7 +9,7 @@ export const useFetchCollection = () => {
 
 	const getData = async () => {
 		setisLoading(true);
-		const response = await fetch(`${url}/api/admin`);
+		const response = await fetch(`/api/admin`);
 		const data = await response.json();
 		setData(data.message);
 		setisLoading(false);
@@ -28,7 +28,7 @@ export const useAddPost = () => {
 	const addPost = async (formData, router) => {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`${url}/api/admin`, {
+			const response = await fetch(`/api/admin`, {
 				method: "POST",
 				body: JSON.stringify(formData),
 				headers: {
@@ -69,7 +69,7 @@ export const useEditPost = () => {
 				isStarred: formData.isStarred,
 			};
 
-			const response = await fetch(`${url}/api/admin?slug=${params}`, {
+			const response = await fetch(`/api/admin?slug=${params}`, {
 				method: "PUT",
 				body: JSON.stringify(updatedPost),
 				headers: {
