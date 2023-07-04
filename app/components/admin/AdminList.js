@@ -16,7 +16,7 @@ const AdminList = () => {
 
 	const handleDelete = async (slug) => {
 		try {
-			const response = await fetch(`${url}/api/admin/?slug=${slug}`, {
+			const response = await fetch(`/api/admin/?slug=${slug}`, {
 				method: "DELETE",
 			});
 

@@ -1,3 +1,4 @@
+"use client";
 import DetailHeader from "@/app/components/post-detail/DetailHeader";
 import DetailPage from "@/app/components/post-detail/DetailPage";
 import { Suspense } from "react";

@@ -1,3 +1,4 @@
+"use client";
 import PostItem from "../components/posts/PostItem";
 import { getData } from "@/app/lib/fetch";
 

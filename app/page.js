@@ -1,3 +1,4 @@
+"use client"
 import FeaturedPosts from "./components/posts/FeaturedPosts";
 import Hero from "./components/ui/Hero";
 import PostItem from "./components/posts/PostItem";
