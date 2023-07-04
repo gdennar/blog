@@ -32,6 +32,7 @@ const CommentForm = ({ postComment, slug }) => {
 				headers: {
 					"Content-Type": "application/json",
 				},
+				credentials: "same-origin",
 			});
 			const data = await response.json();
 			console.log(data);

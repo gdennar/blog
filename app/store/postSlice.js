@@ -11,9 +11,9 @@ const postSlice = createSlice({
 	name: "posts",
 	initialState,
 	reducers: {
-		storePosts: (state, action) => {
-			state.posts = action.payload.posts;
-		},
+		// storePosts: (state, action) => {
+		// 	state.posts = action.payload.posts;
+		// },
 
 		storeComments: (state, action) => {
 			if (Array.isArray(action.payload.comments)) {
@@ -22,7 +22,6 @@ const postSlice = createSlice({
 				state.comments = [...state.comments, action.payload.comments];
 			}
 		},
-
 	},
 });
 

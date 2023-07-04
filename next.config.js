@@ -1,37 +1,33 @@
-// const dns = require("dns");
-// dns.setDefaultResultOrder("ipv4first");
-// const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
-
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+	async headers() {
+		return [
+			{
+				// matching all API routes
+				source: "/api/:path*",
+				headers: [
+					{ key: "Access-Control-Allow-Credentials", value: "true" },
+					{ key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
+					{
+						key: "Access-Control-Allow-Methods",
+						value: "GET,DELETE,PATCH,POST,PUT",
+					},
+					{
+						key: "Access-Control-Allow-Headers",
+						value:
+							"X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version",
+					},
+				],
+			},
+		];
+	},
 	experimental: {
 		appDir: true,
 	},
 	images: {
 		domains: ["images.unsplash.com"],
 	},
-	// env: {
-	// 	mongodb_url:
-	// 		"mongodb+srv://goldendennar:LDbMsJFdu8HhXNPO@cluster0.kidj1id.mongodb.net/?retryWrites=true&w=majority",
-	// 	admin_key: "Denny",
-	// 	api_url: "http://127.0.0.1:3000",
-	// }
 };
-
-// return {
-// 	experimental: {
-// 		appDir: true,
-// 	},
-// 	images: {
-// 		domains: ["images.unsplash.com"],
-// 	},
-// 	env: {
-// 		mongodb_url:
-// 			"mongodb+srv://goldendennar:LDbMsJFdu8HhXNPO@cluster0.kidj1id.mongodb.net/?retryWrites=true&w=majority",
-// 		admin_key: "Denny",
-// 		api_url: "http://127.0.0.1:3000",
-// 	},
-// };
 
 module.exports = nextConfig;

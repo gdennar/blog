@@ -4,6 +4,8 @@ import { useState } from "react";
 import classes from "./Header.module.css";
 import { usePathname, useRouter } from "next/navigation";
 
+export let isApproved = false;
+
 const Header = () => {
 	const router = useRouter();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +19,7 @@ const Header = () => {
 	const accessAdmin = () => {
 		const passcode = prompt("Are you an admin:");
 		if (passcode === ans) {
+			isApproved = true;
 			router.push("/admin/posts");
 		} else {
 			alert("Access Denied");

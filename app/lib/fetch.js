@@ -1,7 +1,7 @@
 export async function getData() {
 	const url = process.env.NEXT_PUBLIC_URL;
 
-	const response = await fetch(`/api/admin`, {
+	const response = await fetch(`${url}/api/admin`, {
 		next: {
 			revalidate: 120,
 		},

@@ -1,8 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PostItem from "./PostItem";
-import { useDispatch, useSelector } from "react-redux";
-import { postAction } from "@/app/store/postSlice";
+import { useSelector } from "react-redux";
+
 import { useFetchCollection } from "../../lib/api-utils";
 import Link from "next/link";
 import { Alert } from "@material-tailwind/react";
@@ -12,16 +12,7 @@ const AdminList = () => {
 	const { data, isLoading } = useFetchCollection();
 	const url = process.env.NEXT_PUBLIC_URL;
 
-	const posts = useSelector((state) => state.posts.posts);
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		dispatch(
-			postAction.storePosts({
-				posts: data,
-			})
-		);
-	}, [dispatch, data]);
+	//const posts = useSelector((state) => state.posts.posts);
 
 	const handleDelete = async (slug) => {
 		try {
@@ -67,12 +58,12 @@ const AdminList = () => {
 				<tbody className="table-row-group">
 					{isLoading ? (
 						<tr key="loader">
-							<td className="text-center table-row p-10">
+							<td className="text-center table-row p-10" colSpan="6">
 								<p className="text-xl">Loading...</p>
 							</td>
 						</tr>
 					) : (
-						<PostItem posts={posts} onDelete={handleDelete} />
+						<PostItem posts={data} onDelete={handleDelete} />
 					)}
 				</tbody>
 			</table>

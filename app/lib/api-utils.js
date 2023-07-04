@@ -1,16 +1,23 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
 export const useFetchCollection = () => {
 	const [data, setData] = useState([]);
 	const [isLoading, setisLoading] = useState(false);
+	//const dispatch = useDispatch();
 
 	const getData = async () => {
 		setisLoading(true);
-		const response = await fetch(`/api/admin`);
+		const response = await fetch(`${url}/api/admin`);
 		const data = await response.json();
+		// dispatch(
+		// 	postAction.storePosts({
+		// 		posts: data.message,
+		// 	})
+		// );
 		setData(data.message);
 		setisLoading(false);
 	};
@@ -28,12 +35,13 @@ export const useAddPost = () => {
 	const addPost = async (formData, router) => {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`/api/admin`, {
+			const response = await fetch(`${url}/api/admin`, {
 				method: "POST",
 				body: JSON.stringify(formData),
 				headers: {
 					"Content-Type": "application/json",
 				},
+				credentials: "same-origin",
 			});
 
 			if (response.ok) {
@@ -69,12 +77,13 @@ export const useEditPost = () => {
 				isStarred: formData.isStarred,
 			};
 
-			const response = await fetch(`/api/admin?slug=${params}`, {
+			const response = await fetch(`${url}/api/admin?slug=${params}`, {
 				method: "PUT",
 				body: JSON.stringify(updatedPost),
 				headers: {
 					"Content-Type": "application/json",
 				},
+				credentials: "same-origin",
 			});
 
 			if (response.ok) {
