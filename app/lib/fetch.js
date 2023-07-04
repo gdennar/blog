@@ -1,5 +1,5 @@
 export async function getData() {
-	const url = process.env.api_url;
+	const url = process.env.NEXT_PUBLIC_URL;
 
 	const response = await fetch(`${url}/api/admin`, {
 		next: {

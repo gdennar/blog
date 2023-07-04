@@ -13,7 +13,7 @@ const CommentForm = ({ postComment, slug }) => {
 	const [message, setMessage] = useState("");
 	const [timeStamp, setTimestamp] = useState(currentTimestamp);
 	const dispatch = useDispatch();
-	const url = process.env.api_url;
+	const url = process.env.NEXT_PUBLIC_URL;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

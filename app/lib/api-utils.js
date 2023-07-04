@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const url = process.env.api_url;
+const url = process.env.NEXT_PUBLIC_URL;
 
 export const useFetchCollection = () => {
 	const [data, setData] = useState([]);

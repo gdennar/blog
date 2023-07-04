@@ -10,7 +10,7 @@ import { Alert } from "@material-tailwind/react";
 const AdminList = () => {
 	const [message, setMessage] = useState("");
 	const { data, isLoading } = useFetchCollection();
-	const url = process.env.api_url;
+	const url = process.env.NEXT_PUBLIC_URL;
 
 	const posts = useSelector((state) => state.posts.posts);
 	const dispatch = useDispatch();

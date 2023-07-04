@@ -10,26 +10,30 @@ import { postAction } from "@/app/store/postSlice";
 const Comments = (props) => {
 	const { slug } = props;
 	const dispatch = useDispatch();
-	const url = process.env.api_url;
+	const url = process.env.NEXT_PUBLIC_URL;
 
 	const [showComments, setShowComments] = useState(false);
 	const [showForm, setShowForm] = useState(false);
 
 	useEffect(() => {
+		let subscribed = true;
 		const getData = async () => {
-			const response = await fetch(
-				`http://localhost:3000/api/comments/?slug=${slug}`
-			);
+			const response = await fetch(`${url}/api/comments/?slug=${slug}`);
 			const result = await response.json();
 			const comments = result.comments;
-
-			dispatch(
-				postAction.storeComments({
-					comments,
-				})
-			);
+			if (subscribed) {
+				dispatch(
+					postAction.storeComments({
+						comments,
+					})
+				);
+			}
 		};
 		getData();
+
+		return () => {
+			subscribed = false;
+		};
 	}, [dispatch, slug, url]);
 
 	const showCommentHandler = (event) => {

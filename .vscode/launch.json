@@ -10,23 +10,23 @@
 			"name": "Launch Chrome against localhost",
 			"url": "http://127.0.0.1:3000",
 			"webRoot": "${workspaceFolder}"
-		},
-		{
-			"name": "Next.js: debug client-side",
-			"type": "chrome",
-			"request": "launch",
-			"url": "http://127.0.0.1:3000"
-		},
-		{
-			"name": "Next.js: debug full stack",
-			"type": "node-terminal",
-			"request": "launch",
-			"command": "npm run dev",
-			"serverReadyAction": {
-				"pattern": "started server on .+, url: (https?://.+)",
-				"uriFormat": "%s",
-				"action": "debugWithChrome"
-			}
 		}
+		// {
+		// 	"name": "Next.js: debug client-side",
+		// 	"type": "chrome",
+		// 	"request": "launch",
+		// 	"url": "http://127.0.0.1:3000"
+		// },
+		// {
+		// 	"name": "Next.js: debug full stack",
+		// 	"type": "node-terminal",
+		// 	"request": "launch",
+		// 	"command": "npm run dev",
+		// 	"serverReadyAction": {
+		// 		"pattern": "started server on .+, url: (https?://.+)",
+		// 		"uriFormat": "%s",
+		// 		"action": "debugWithChrome"
+		// 	}
+		// }
 	]
 }
