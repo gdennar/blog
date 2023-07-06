@@ -1,5 +1,4 @@
 import Post from "./Post";
-import postImage from "../../../public/images/site/profile3.png";
 import Link from "next/link";
 import classes from "./PostItem.module.css";
 

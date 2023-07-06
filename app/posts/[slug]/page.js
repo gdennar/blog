@@ -1,14 +1,13 @@
-"use client";
 import DetailHeader from "@/app/components/post-detail/DetailHeader";
 import DetailPage from "@/app/components/post-detail/DetailPage";
 import { Suspense } from "react";
-import { getData } from "@/app/lib/fetch";
 import Comments from "@/app/components/comments/Comments";
+import { getPostBySlug } from "@/app/lib/mongo/posts";
+
+export const dynamic = "force-dynamic";
 
 async function PostDetail({ params: { slug } }) {
-	const data = await getData();
-
-	const posts = data.find((post) => post.slug === slug);
+	const { posts } = await getPostBySlug(slug);
 
 	return (
 		<section>

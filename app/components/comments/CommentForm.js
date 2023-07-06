@@ -26,7 +26,7 @@ const CommentForm = ({ postComment, slug }) => {
 		};
 
 		try {
-			const response = await fetch(`/api/comments`, {
+			const response = await fetch(`${url}/api/comment`, {
 				method: "POST",
 				body: JSON.stringify(comments),
 				headers: {

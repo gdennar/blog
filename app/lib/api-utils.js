@@ -1,33 +1,28 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
-export const useFetchCollection = () => {
-	const [data, setData] = useState([]);
-	const [isLoading, setisLoading] = useState(false);
-	//const dispatch = useDispatch();
+// export const useFetchCollection = () => {
+// 	const [data, setData] = useState([]);
+// 	const [isLoading, setisLoading] = useState(false);
+// 	console.log(data);
 
-	const getData = async () => {
-		setisLoading(true);
-		const response = await fetch(`/api/admin`);
-		const data = await response.json();
-		// dispatch(
-		// 	postAction.storePosts({
-		// 		posts: data.message,
-		// 	})
-		// );
-		setData(data.message);
-		setisLoading(false);
-	};
+// 	const getData = async () => {
+// 		setisLoading(true);
+// 		const response = await fetch(`${url}/api/posts`);
+// 		const data = await response.json();
 
-	useEffect(() => {
-		getData();
-	}, []);
+// 		setData(data.message);
+// 		setisLoading(false);
+// 	};
 
-	return { data, isLoading };
-};
+// 	useEffect(() => {
+// 		getData();
+// 	}, []);
+
+// 	return { data, isLoading };
+// };
 
 export const useAddPost = () => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +30,7 @@ export const useAddPost = () => {
 	const addPost = async (formData, router) => {
 		try {
 			setIsLoading(true);
-			const response = await fetch(`/api/admin`, {
+			const response = await fetch(`${url}/api/posts`, {
 				method: "POST",
 				body: JSON.stringify(formData),
 				headers: {
@@ -77,7 +72,7 @@ export const useEditPost = () => {
 				isStarred: formData.isStarred,
 			};
 
-			const response = await fetch(`/api/admin?slug=${params}`, {
+			const response = await fetch(`${url}/api/posts?slug=${params}`, {
 				method: "PUT",
 				body: JSON.stringify(updatedPost),
 				headers: {

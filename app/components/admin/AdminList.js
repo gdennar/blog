@@ -9,14 +9,14 @@ import { Alert } from "@material-tailwind/react";
 
 const AdminList = () => {
 	const [message, setMessage] = useState("");
-	const { data, isLoading } = useFetchCollection();
+	//const { data, isLoading } = useFetchCollection();
 	const url = process.env.NEXT_PUBLIC_URL;
 
 	//const posts = useSelector((state) => state.posts.posts);
 
 	const handleDelete = async (slug) => {
 		try {
-			const response = await fetch(`/api/admin/?slug=${slug}`, {
+			const response = await fetch(`${url}/api/posts/?slug=${slug}`, {
 				method: "DELETE",
 			});
 
@@ -56,15 +56,15 @@ const AdminList = () => {
 					</tr>
 				</thead>
 				<tbody className="table-row-group">
-					{isLoading ? (
+					{/* {isLoading ? (
 						<tr key="loader">
 							<td className="text-center table-row p-10" colSpan="6">
 								<p className="text-xl">Loading...</p>
 							</td>
 						</tr>
-					) : (
-						<PostItem posts={data} onDelete={handleDelete} />
-					)}
+					) : ( */}
+					<PostItem onDelete={handleDelete} />
+					{/* )} */}
 				</tbody>
 			</table>
 		</div>

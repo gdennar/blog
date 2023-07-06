@@ -1,13 +1,12 @@
-"use client"
 import FeaturedPosts from "./components/posts/FeaturedPosts";
 import Hero from "./components/ui/Hero";
 import PostItem from "./components/posts/PostItem";
-import { getData } from "./lib/fetch";
+import { getAllPosts } from "./lib/mongo/posts";
 
-//export const dynamic = "force-dynamic";
+export const dynamic = "force-dynamic";
 
 async function Home() {
-	const posts = await getData();
+	const { posts } = await getAllPosts();
 
 	const sortedPosts = posts.sort((postA, postB) =>
 		postA.date > postB.date ? -1 : 1

@@ -3,9 +3,8 @@
 import classes from "./CommentList.module.css";
 import { useSelector } from "react-redux";
 
-const CommentList = ({ slug }) => {
+const CommentList = () => {
 	const filteredComment = useSelector((state) => state.posts.comments);
-	
 
 	return (
 		<>

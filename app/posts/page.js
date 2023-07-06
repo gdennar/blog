@@ -1,12 +1,14 @@
-"use client";
 import PostItem from "../components/posts/PostItem";
-import { getData } from "@/app/lib/fetch";
+import { getAllPosts } from "../lib/mongo/posts";
+
+export const dynamic = "force-dynamic";
 
 async function AllPostPage() {
-	const data = await getData();
+	const { posts } = await getAllPosts();
+
 	return (
 		<section>
-			<PostItem data={data} title="All Posts" load="Load more Posts" />
+			<PostItem data={posts} title="All Posts" load="Load more Posts" />
 		</section>
 	);
 }
