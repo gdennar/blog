@@ -89,8 +89,8 @@ export const useEditPost = () => {
 		} catch (error) {
 			throw error;
 		} finally {
-			router.push("/admin/posts");
 			setIsLoading(false);
+			router.push("/admin/posts");
 		}
 	};
 

@@ -1,35 +1,39 @@
 "use client";
 import { useEditPost } from "@/app/lib/api-utils";
+import { postAction } from "@/app/store/postSlice";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
 const PostItem = (props) => {
 	const { onDelete } = props;
 	const { loading } = useEditPost();
-	const [isloading, setIsLoading] = useState(false);
-	const [posts, setPosts] = useState(false);
+	const posts = useSelector((state) => state.posts.posts);
 	const router = useRouter();
-
-	const getData = async () => {
-		setIsLoading(true);
-		try {
-			const response = await fetch(`${url}/api/posts`);
-			const data = await response.json();
-
-			setPosts(data.posts);
-
-			setIsLoading(false);
-		} catch (error) {
-			console.log(error.message);
-			setIsLoading(false);
-		}
-	};
+	const dispatch = useDispatch();
 
 	useEffect(() => {
+		let subscribed = true;
+		const getData = async () => {
+			const response = await fetch(`${url}/api/posts`);
+			const result = await response.json();
+			const post = result.posts;
+			if (subscribed) {
+				dispatch(
+					postAction.storePosts({
+						post,
+					})
+				);
+			}
+		};
 		getData();
-	}, []);
+
+		return () => {
+			subscribed = false;
+		};
+	}, [dispatch]);
 
 	const handleEdit = (slug) => {
 		router.push(`/admin/form/?slug=${slug}`);

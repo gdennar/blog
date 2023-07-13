@@ -18,9 +18,7 @@ const Comments = (props) => {
 	useEffect(() => {
 		let subscribed = true;
 		const getData = async () => {
-			const response = await fetch(`${url}/api/comment/?slug=${slug}`, {
-				credentials: "same-origin",
-			});
+			const response = await fetch(`${url}/api/comment/?slug=${slug}`);
 			const result = await response.json();
 			const comments = result.comments;
 			if (subscribed) {
